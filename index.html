@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Custom portraits and wall art made for your home, gifts, and special memories.">
+  <title>WallArts | Custom Portraits & Wall Art</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="WallArts home"><span class="brand-mark">W</span><span><strong>WallArts</strong><small>Portraits · Wall Art · Custom Designs</small></span></a>
+    <nav><a href="#gallery">Gallery</a><a href="#products">Products</a><a href="#how">How it works</a><a href="#contact">Contact</a></nav>
+    <a class="button button-small" href="#contact">Order artwork</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR MEMORIES, MADE VISIBLE</p>
+        <h1>Turn your favourite moments into <em>art.</em></h1>
+        <p class="hero-intro">Custom portraits and wall art that make your space feel personal. Great for family memories, gifts, and room makeovers.</p>
+        <div class="actions"><a class="button" href="#products">Explore artwork</a><a class="button button-outline" href="#contact">Request a custom quote</a></div>
+        <p class="microcopy">Made to order · Personalised designs · Enquire before payment</p>
+      </div>
+      <div class="hero-image" role="img" aria-label="Framed art in a warm modern living room"></div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-heading"><div><p class="eyebrow">FIND YOUR STYLE</p><h2>Featured artwork</h2></div><p>Choose a starting point, then tell us what you have in mind.</p></div>
+      <div class="product-grid">
+        <article class="product-card"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=85" alt="Framed portrait artwork"><div class="product-info"><h3>Custom portrait</h3><p class="price">From KSh 1,000</p><p>Turn a photo into a meaningful piece for your wall or as a gift.</p><button class="text-button" data-product="Custom portrait">Enquire about this ↗</button></div></article>
+        <article class="product-card"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=85" alt="Art gallery wall"><div class="product-info"><h3>Family wall art</h3><p class="price">Quote on request</p><p>Bring family photos together in a display that fits your space.</p><button class="text-button" data-product="Family wall art">Enquire about this ↗</button></div></article>
+        <article class="product-card"><img src="https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=900&q=85" alt="Colourful canvas artwork"><div class="product-info"><h3>Canvas & wall pieces</h3><p class="price">Quote on request</p><p>Decorative art selected to complement your room and style.</p><button class="text-button" data-product="Canvas and wall pieces">Enquire about this ↗</button></div></article>
+      </div>
+      <p class="note">Prices and product images are starter examples. Confirm your actual prices, available sizes, and product photos before publishing.</p>
+    </section>
+
+    <section class="gallery-band" id="gallery">
+      <div><p class="eyebrow">MADE PERSONAL</p><h2>Your idea. Your space. Your artwork.</h2><p>Share your photo, preferred style, size, and budget. We’ll discuss the options before you confirm an order.</p><a class="button button-light" href="#contact">Start an enquiry</a></div>
+    </section>
+
+    <section class="section steps" id="how">
+      <div class="section-heading"><div><p class="eyebrow">SIMPLE PROCESS</p><h2>How ordering works</h2></div></div>
+      <div class="step-grid"><div><span>01</span><h3>Tell us your idea</h3><p>Choose a product and share the photo, theme, size, or room you have in mind.</p></div><div><span>02</span><h3>Confirm the details</h3><p>We discuss design options, price, production time, and delivery before you commit.</p></div><div><span>03</span><h3>Approve your order</h3><p>Once details are agreed, we confirm the next steps and arrange collection or delivery.</p></div></div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div><p class="eyebrow">LET’S MAKE SOMETHING MEANINGFUL</p><h2>Ready to order or ask a question?</h2><p>Send an enquiry with the product, preferred size, and any details you already know.</p></div>
+      <form id="enquiry-form">
+        <label for="name">Your name</label><input id="name" name="name" required placeholder="Name">
+        <label for="product">What are you interested in?</label><select id="product" name="product"><option>Custom portrait</option><option>Family wall art</option><option>Canvas and wall pieces</option><option>Other / custom idea</option></select>
+        <label for="details">Details (optional)</label><textarea id="details" name="details" rows="3" placeholder="Size, style, budget, or delivery area"></textarea>
+        <button class="button" type="submit">Send enquiry on WhatsApp</button>
+        <p class="microcopy">This opens WhatsApp with your message prepared; it does not send until you press Send.</p>
+      </form>
+    </section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">W</span><span><strong>WallArts</strong><small>Portraits · Wall Art · Custom Designs</small></span></a><p>© <span id="year"></span> WallArts. Replace this name and details with your final brand information.</p></footer>
+  <script src="/script.js"></script>
+</body>
+</html>
