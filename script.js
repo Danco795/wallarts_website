@@ -1,13 +1,13 @@
 // IMPORTANT: replace this placeholder with your WhatsApp number in international format.
 // Kenya example: 2547XXXXXXXX (no +, spaces, or leading 0).
-const WHATSAPP_NUMBER = "2547XXXXXXXX";
+const WHATSAPP_NUMBER = "254723106225";
 
-function openWhatsApp(message) {
+function openWhatsApp(hey we are open) {
   if (WHATSAPP_NUMBER.includes("X")) {
     alert("Website setup needed: open script.js and replace 2547XXXXXXXX with your WhatsApp number.");
     return;
   }
-  window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+  window.open("https://wa.me/" + 254723106225 + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
 }
 
 document.querySelectorAll("[data-product]").forEach((button) => {
