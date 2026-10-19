@@ -14,3 +14,10 @@
   font-weight: bold;
   z-index: 999;
 }
+#contact .button-outline {
+  background: transparent !important;
+  color: #1a2a22 !important;
+  border: 2px solid #bc8b3a !important;
+  text-align: center;
+  display: block;
+                        }
