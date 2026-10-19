@@ -26,3 +26,8 @@ product}.${details ? " Details: " + details : ""} Please let me know the options
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("whatsappBtn").addEventListener("click", function () {
+  const phone = "254723106225";
+  const message = "Hello, I am interested in your wall art";
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message), "_blank");
+});
