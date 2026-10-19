@@ -1,4 +1,4 @@
-// IMPORTANT: replace this placeholder with your WhatsApp number in international format.
+// :  .254723106225
 // Kenya example: 2547XXXXXXXX (no +, spaces, or leading 0).
 const WHATSAPP_NUMBER = "254723106225";
 
@@ -7,22 +7,21 @@ function openWhatsApp(hey we are open) {
     alert("Website setup needed: open script.js and replace 2547XXXXXXXX with your WhatsApp number.");
     return;
   }
-  window.open("https://wa.me/" + 254723106225 + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+  
 }
 
-document.querySelectorAll("[data-product]").forEach((button) => {
+document.getElementById("whatsappBtn").addEventListener("click", function () {
+  const phone = "254723106225";
+  const message = "Hello, I am interested in your wall art";
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message), "_blank");
+}); document.querySelectorAll("[data-product]").forEach((button) => {
   button.addEventListener("click", () => {
     const product = button.dataset.product;
     openWhatsApp(`Hello, I'm interested in ${product}. Please share available options, sizes, prices, and delivery details.`);
   });
 });
 
-document.getElementById("enquiry-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const product = document.getElementById("product").value;
-  const details = document.getElementById("details").value.trim();
-  const message = `Hello, my name is ${name}. I'm enquiring about: ${product}.${details ? " Details: " + details : ""} Please let me know the options and pricing.`;
+product}.${details ? " Details: " + details : ""} Please let me know the options and pricing.`;
   openWhatsApp(message);
 });
 
