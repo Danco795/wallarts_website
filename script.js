@@ -96,7 +96,15 @@ function addWallArtSlideshow() {
     image.decoding = "async";
     const caption = document.createElement("figcaption");
     caption.textContent = "Design " + (index + 1);
-    figure.append(image, caption);
+        figure.append(image, caption);
+    figure.addEventListener("click", () => {
+      const box = document.getElementById("lightbox");
+      if (!box) return;
+      document.getElementById("lightbox-img").src = slide.src;
+      document.getElementById("lightbox-img").alt = slide.alt;
+      document.getElementById("lightbox-caption").textContent = "Design " + (index + 1);
+      box.showModal();
+    });
     track.appendChild(figure);
 
     const dot = document.createElement("button");
