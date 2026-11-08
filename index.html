@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Custom portraits and wall art made to order in Ruaka. Browse new arrivals and preview frame sizes A0–A5.">
-  <title>WallArts | Portraits &amp; Wall Art in Ruaka</title>
+  <meta name="theme-color" content="#f6f2eb">
+  <meta name="description" content="Personalised portraits and wall art made to order in Ruaka. Browse new arrivals and preview your artwork on a wall in A0–A5 sizes.">
+  <title>WallArts | Personalised Wall Art in Ruaka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -12,52 +13,88 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="WallArts home"><span class="brand-mark">W</span><span><strong>WallArts</strong><small>Art made personal · Ruaka</small></span></a>
-    <nav aria-label="Main navigation"><a href="#new-arrivals">New arrivals</a><a href="#sizes">Frame sizes</a><a href="#how">Ordering</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+    <a class="brand" href="#home" aria-label="WallArts home"><span class="brand-mark">W</span><span class="brand-copy"><strong>WallArts</strong><small>Art made personal · Ruaka</small></span></a>
+    <nav aria-label="Main navigation"><a href="#new-arrivals">Gallery</a><a href="#sizes">Size preview</a><a href="#ordering">Ordering</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
     <a class="button button-small" href="#contact">Start an order</a>
   </header>
+
   <main id="home">
     <section class="hero page-wrap">
-      <div><p class="eyebrow">CUSTOM WALL ART · MADE IN RUAKA</p><h1>Your favourite moments,<br>framed as <em>art.</em></h1><p class="intro">Personalised portraits and wall art created around your story, your style and your space.</p><div class="actions"><a class="button" href="#new-arrivals">Browse new arrivals</a><a class="text-link" href="#sizes">Preview frame sizes →</a></div><p class="hero-note">Made to order · 50% start-up deposit · Pickup in Ruaka</p></div>
-      <div class="hero-image"><img src="bedroom-wall.png" alt="Wall art styled in a bedroom"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> MADE TO ORDER IN RUAKA</p>
+        <h1>Your favourite moments,<br>framed as <em>art.</em></h1>
+        <p class="hero-intro">Personalised portraits and wall art made around your story, your style and your space.</p>
+        <div class="hero-actions"><a class="button" href="#new-arrivals">Explore new arrivals <span>↓</span></a><a class="text-link" href="#sizes">Preview sizes <span>→</span></a></div>
+        <div class="hero-points"><span>50% deposit to start</span><span>About 3 business days</span><span>Ruaka pickup</span></div>
+      </div>
+      <div class="hero-visual"><img src="bedroom-wall.png" alt="Wall art displayed in a bedroom" fetchpriority="high"><div class="hero-stamp">Made<br><b>for you</b></div><div class="hero-caption">Personalised art · Made with care</div></div>
     </section>
 
-    <section class="section arrivals" id="new-arrivals"><div class="page-wrap">
-      <div class="section-heading"><div><p class="eyebrow">LATEST DESIGNS</p><h2>New arrivals<span class="gold">.</span></h2></div><p>Tap any piece to see the full image. Ask us about available sizes, finishes and custom options.</p></div>
-      <div class="gallery">
-        <button class="art" data-image="bedroom-wall.png" data-title="Bedroom feature wall art"><img src="bedroom-wall.png" alt="Bedroom feature wall art" loading="lazy"><span>Bedroom feature wall</span></button>
-        <button class="art" data-image="family-wall-art.jpg" data-title="Family wall art"><img src="family-wall-art.jpg" alt="Family wall art" loading="lazy"><span>Family portrait</span></button>
-        <button class="art" data-image="japan-canvas.png" data-title="Japanese landscape canvas"><img src="japan-canvas.png" alt="Japanese landscape canvas" loading="lazy"><span>Japanese canvas</span></button>
-        <button class="art" data-image="canvas-set.jpg" data-title="Canvas set"><img src="canvas-set.jpg" alt="Canvas set" loading="lazy"><span>Canvas set</span></button>
-        <button class="art" data-image="promo-ruaka.jpg" data-title="Ruaka collection"><img src="promo-ruaka.jpg" alt="Ruaka collection" loading="lazy"><span>Ruaka collection</span></button>
-        <button class="art" data-image="football-1.jpg" data-title="Football art"><img src="football-1.jpg" alt="Football art" loading="lazy"><span>Football art</span></button>
-        <button class="art" data-image="football-2.jpg" data-title="Football collage"><img src="football-2.jpg" alt="Football collage" loading="lazy"><span>Football collage</span></button>
-        <button class="art" data-image="football-3.jpg" data-title="Football boots and ball art"><img src="football-3.jpg" alt="Football boots and ball art" loading="lazy"><span>Football keepsake</span></button>
-        <button class="art" data-image="football-4.jpg" data-title="Football wall art"><img src="football-4.jpg" alt="Football wall art" loading="lazy"><span>Football wall art</span></button>
-        <button class="art" data-image="football-5.jpg" data-title="Football print"><img src="football-5.jpg" alt="Football print" loading="lazy"><span>Football print</span></button>
-        <button class="art" data-image="football-7.jpg" data-title="Football keepsake"><img src="football-7.jpg" alt="Football keepsake art" loading="lazy"><span>Football keepsake</span></button>
-        <button class="art" data-image="football-9.jpg" data-title="Football artwork"><img src="football-9.jpg" alt="Football artwork" loading="lazy"><span>Football artwork</span></button>
-        <button class="art" data-image="portrait-2.jpg" data-title="Portrait artwork"><img src="portrait-2.jpg" alt="Portrait artwork" loading="lazy"><span>Portrait artwork</span></button>
-        <button class="art" data-image="portrait-gift.jpg" data-title="Gift portrait"><img src="portrait-gift.jpg" alt="Gift portrait" loading="lazy"><span>Gift portrait</span></button>
-        <button class="art" data-image="watercolor-family.jpg" data-title="Watercolor family portrait"><img src="watercolor-family.jpg" alt="Watercolor family portrait" loading="lazy"><span>Watercolor family</span></button>
-        <button class="art" data-image="quote-1.jpg" data-title="Motivational quote art"><img src="quote-1.jpg" alt="Motivational quote art" loading="lazy"><span>Inspirational quote</span></button>
-        <button class="art" data-image="quote-2.jpg" data-title="Statement wall art"><img src="quote-2.jpg" alt="Statement wall art" loading="lazy"><span>Statement art</span></button>
+    <section class="section arrivals" id="new-arrivals">
+      <div class="page-wrap">
+        <div class="section-heading"><div><p class="eyebrow">A FRESH LOOK FOR YOUR WALLS</p><h2>New arrivals<span class="gold">.</span></h2></div><p>Tap any piece to open a larger image. Ask us about sizes, finishes and custom options.</p></div>
+        <div class="gallery-grid">
+          <button class="art-card art-tall" type="button" data-image="bedroom-wall.png" data-title="Bedroom feature wall art"><img src="bedroom-wall.png" alt="Bedroom feature wall art" loading="lazy"><span>Bedroom feature wall</span></button>
+          <button class="art-card" type="button" data-image="family-wall-art.jpg" data-title="Family wall art"><img src="family-wall-art.jpg" alt="Family wall art" loading="lazy"><span>Family portrait</span></button>
+          <button class="art-card" type="button" data-image="japan-canvas.png" data-title="Japanese landscape canvas"><img src="japan-canvas.png" alt="Japanese landscape canvas" loading="lazy"><span>Japanese canvas</span></button>
+          <button class="art-card" type="button" data-image="canvas-set.jpg" data-title="Canvas set"><img src="canvas-set.jpg" alt="Canvas set" loading="lazy"><span>Canvas set</span></button>
+          <button class="art-card art-wide" type="button" data-image="promo-ruaka.jpg" data-title="Ruaka collection"><img src="promo-ruaka.jpg" alt="Ruaka collection wall art" loading="lazy"><span>Ruaka collection</span></button>
+          <button class="art-card" type="button" data-image="football-1.jpg" data-title="Football art"><img src="football-1.jpg" alt="Football art" loading="lazy"><span>Football art</span></button>
+          <button class="art-card" type="button" data-image="football-2.jpg" data-title="Football collage"><img src="football-2.jpg" alt="Football collage" loading="lazy"><span>Football collage</span></button>
+          <button class="art-card" type="button" data-image="football-3.jpg" data-title="Football boots and ball art"><img src="football-3.jpg" alt="Football boots and ball art" loading="lazy"><span>Football keepsake</span></button>
+          <button class="art-card" type="button" data-image="football-4.jpg" data-title="Football wall art"><img src="football-4.jpg" alt="Football wall art" loading="lazy"><span>Football wall art</span></button>
+          <button class="art-card" type="button" data-image="football-5.jpg" data-title="Football print"><img src="football-5.jpg" alt="Football print" loading="lazy"><span>Football print</span></button>
+          <button class="art-card" type="button" data-image="football-7.jpg" data-title="Football keepsake"><img src="football-7.jpg" alt="Football keepsake art" loading="lazy"><span>Football keepsake</span></button>
+          <button class="art-card" type="button" data-image="football-9.jpg" data-title="Football artwork"><img src="football-9.jpg" alt="Football artwork" loading="lazy"><span>Football artwork</span></button>
+          <button class="art-card" type="button" data-image="portrait-2.jpg" data-title="Portrait artwork"><img src="portrait-2.jpg" alt="Portrait artwork" loading="lazy"><span>Portrait artwork</span></button>
+          <button class="art-card" type="button" data-image="portrait-gift.jpg" data-title="Gift portrait"><img src="portrait-gift.jpg" alt="Gift portrait" loading="lazy"><span>Gift portrait</span></button>
+          <button class="art-card" type="button" data-image="watercolor-family.jpg" data-title="Watercolor family portrait"><img src="watercolor-family.jpg" alt="Watercolor family portrait" loading="lazy"><span>Watercolor family</span></button>
+          <button class="art-card" type="button" data-image="quote-1.jpg" data-title="Motivational wall art"><img src="quote-1.jpg" alt="Motivational wall art" loading="lazy"><span>Inspirational quote</span></button>
+          <button class="art-card" type="button" data-image="quote-2.jpg" data-title="Statement wall art"><img src="quote-2.jpg" alt="Statement wall art" loading="lazy"><span>Statement art</span></button>
+        </div>
+        <p class="gallery-footnote">Images show examples of available styles. Your custom piece is made to your preferences.</p>
       </div>
-    </div></section>
+    </section>
 
-    <section class="section size-section" id="sizes"><div class="page-wrap size-layout"><div><p class="eyebrow">FIND YOUR FIT</p><h2>See your artwork in different sizes.</h2><p>Preview our A0–A5 frame sizes and Oak, Walnut, Black or White finishes with the images from our collection.</p><a class="button" href="wallarts_frames.html">Open the frame size slideshow</a></div><div class="size-teaser"><img src="size-poster.png" alt="Wall art size guide"><div><strong>A0–A5</strong><span>6 sizes · 4 frame finishes · 9 artwork previews</span></div></div></div></section>
+    <section class="section size-section" id="sizes">
+      <div class="page-wrap">
+        <div class="section-heading"><div><p class="eyebrow">SEE IT ON YOUR WALL</p><h2>Find the right size.</h2></div><p>Choose an artwork, switch between A5 and A0, and compare frame finishes in a room-style wall display.</p></div>
+        <div class="showroom">
+          <div class="showroom-wall">
+            <div class="wall-light"></div>
+            <div class="wall-frame" id="size-frame"><div class="wall-mat"><img id="size-art" src="bedroom-wall.png" alt="Bedroom wall art shown in an A5 frame"></div></div>
+            <div class="wall-furniture" aria-hidden="true"><div class="vase vase-one"></div><div class="vase vase-two"></div><div class="sofa"><i></i><i></i><b></b></div></div>
+            <span class="wall-scale-note">Room-style size preview · proportion is illustrative</span>
+          </div>
+          <div class="showroom-controls">
+            <div class="preview-heading"><span class="eyebrow">FRAME SLIDESHOW</span><span class="slide-count" id="slide-count">1 / 9</span></div>
+            <h3 id="preview-art-name">Bedroom wall art</h3>
+            <p class="preview-description">Explore different artwork and frame sizes to find what feels right for your space.</p>
+            <div class="control-group"><span class="control-label">1 · Select artwork</span><div class="slide-buttons"><button type="button" id="prev-art" aria-label="Previous artwork">←</button><button type="button" id="play-slideshow" aria-pressed="false">▶ Play slideshow</button><button type="button" id="next-art" aria-label="Next artwork">→</button></div></div>
+            <div class="control-group"><span class="control-label">2 · Choose size</span><div class="size-buttons" id="size-options" role="group" aria-label="Frame size"></div></div>
+            <div class="control-group"><span class="control-label">3 · Choose frame finish</span><div class="finish-buttons" id="finish-options" role="group" aria-label="Frame finish"></div></div>
+            <p class="size-disclaimer">The wall scene is a visual guide, not a measurement guarantee. Ask us to confirm dimensions, price and portrait suitability before ordering.</p>
+            <a class="text-link" href="/frames.html">Open full size preview page →</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section class="steps-section section" id="how"><div class="page-wrap"><div class="section-heading"><div><p class="eyebrow">SIMPLE PROCESS</p><h2>From idea to ready-to-collect.</h2></div><p>Production takes around 3 business days after your deposit and design are confirmed.</p></div><div class="steps"><article><b>01</b><h3>Share your idea</h3><p>Tell us the artwork, size, style and where you are based.</p></article><article><b>02</b><h3>Confirm &amp; deposit</h3><p>We agree on the design and quote. A 50% deposit starts production; balance is due before handover.</p></article><article><b>03</b><h3>We make your art</h3><p>Most orders take about 3 business days. We’ll message you when it’s ready.</p></article><article><b>04</b><h3>Collect or deliver</h3><p>Pickup is through the Ruaka front desk. Delivery costs extra, confirmed before you commit.</p></article></div></div></section>
+    <section class="process-band"><div class="page-wrap band-inner"><div><p class="eyebrow">YOUR PHOTO · YOUR STYLE · YOUR ART</p><h2>Let’s make your space feel like yours.</h2></div><a class="button button-light" href="#contact">Start an enquiry ↗</a></div></section>
 
-    <section class="section schedule-section" id="pickup"><div class="page-wrap schedule-layout"><div><p class="eyebrow">PICKUP PLANNING</p><h2>We’ll let you know when it’s ready.</h2><p>Typical estimates depend on approval, portrait preferences and workload. Please wait for our ready message before travelling.</p></div><div class="schedule"><div><b>Order day</b><b>Estimated pickup</b></div><div><strong>Monday–Friday</strong><span>Usually within 3 business days</span></div><div><strong>Saturday</strong><span>Usually Wednesday</span></div><div><strong>Sunday</strong><span>Usually Tuesday or Wednesday</span></div><p>All timelines are estimates. We confirm your expected date directly.</p></div></div></section>
+    <section class="section ordering" id="ordering"><div class="page-wrap"><div class="section-heading"><div><p class="eyebrow">SIMPLE &amp; CLEAR</p><h2>How ordering works.</h2></div><p>We’ll confirm your design and estimated pickup date before you commit.</p></div><div class="steps-grid"><article><span>01</span><h3>Share your idea</h3><p>Tell us the artwork, size, style, budget and where you are based.</p></article><article><span>02</span><h3>Approve &amp; deposit</h3><p>We agree on the design and quote. A 50% deposit starts production; the balance is due before handover.</p></article><article><span>03</span><h3>We create your piece</h3><p>Allow around 3 business days after your deposit and design details are confirmed.</p></article><article><span>04</span><h3>Collect or arrange delivery</h3><p>Pickup is through the Ruaka front desk. Delivery costs extra and is confirmed before you commit.</p></article></div></div></section>
 
-    <section class="section reviews" id="reviews"><div class="page-wrap review-layout"><div><p class="eyebrow">CLIENT FEEDBACK</p><h2>Every piece has a story.</h2><p>We receive feedback in person, online and on social media. We’re gathering customer reviews and will only publish them with the customer’s permission.</p><a class="text-link" href="https://wa.me/254723106225?text=Hello%20WallArts%2C%20I%20would%20like%20to%20share%20feedback%20about%20my%20order." target="_blank" rel="noopener noreferrer">Share your experience →</a></div><div class="review-placeholder"><span>“</span><h3>Your feedback could be featured here.</h3><p>Send us a review and, if you’re happy for it to be shared, we may add it to this section.</p></div></div></section>
+    <section class="section schedule-section" id="pickup"><div class="page-wrap schedule-layout"><div><p class="eyebrow">PICKUP PLANNING</p><h2>We’ll tell you when it’s ready.</h2><p>These are estimates; design and workload can affect timing. Please wait for our ready message before travelling.</p></div><div class="schedule-card"><div class="schedule-header"><b>ORDER DAY</b><b>ESTIMATED PICKUP</b></div><div><strong>Monday–Friday</strong><span>Usually within 3 business days</span></div><div><strong>Saturday</strong><span>Usually Wednesday</span></div><div><strong>Sunday</strong><span>Usually Tuesday or Wednesday</span></div><p>Collection through the Ruaka front desk is confirmed by message.</p></div></div></section>
 
-    <section class="section contact" id="contact"><div class="page-wrap contact-layout"><div><p class="eyebrow">LET’S MAKE SOMETHING MEANINGFUL</p><h2>Ready to make an order?</h2><p>Send your idea, preferred size and style, and delivery or pickup location. We’ll confirm price, deposit and estimated completion with you.</p><ul><li>Ruaka front desk collection</li><li>50% deposit to start production</li><li>Delivery available at an additional cost</li><li>WhatsApp enquiries welcome 24/7; production follows business-day timelines</li></ul></div><form id="enquiry-form"><h3>Start an enquiry</h3><label for="name">Your name</label><input id="name" name="name" required placeholder="Name"><label for="product">What are you interested in?</label><select id="product" name="product"><option>Custom portrait</option><option>Family wall art</option><option>Canvas and wall pieces</option><option>Football-themed art</option><option>Other / custom idea</option></select><label for="details">Your preferences</label><textarea id="details" name="details" rows="4" placeholder="Size, style, budget, when you need it, delivery area"></textarea><button type="submit" class="button">Continue on WhatsApp ↗</button><small>Your message opens in WhatsApp for you to review and send. No payment is taken here.</small></form></div></section>
+    <section class="section reviews" id="reviews"><div class="page-wrap reviews-layout"><div><p class="eyebrow">CLIENT FEEDBACK</p><h2>Every piece has a story.</h2><p>We receive feedback in person, online and on social media. We only publish customer reviews with permission.</p><a class="text-link" href="https://wa.me/254723106225?text=Hello%20WallArts%2C%20I%20would%20like%20to%20share%20feedback%20about%20my%20order." target="_blank" rel="noopener noreferrer">Share your experience ↗</a></div><div class="review-placeholder"><span aria-hidden="true">“</span><h3>Your feedback could be featured here.</h3><p>Share a review with us and let us know if you’re happy for it to be published.</p></div></div></section>
+
+    <section class="section faq-section"><div class="page-wrap faq-layout"><div><p class="eyebrow">GOOD TO KNOW</p><h2>Before you order.</h2></div><div class="faq-list"><details><summary>How much do I pay to start?</summary><p>A 50% deposit starts production after the design and quote are agreed. The balance is due before collection or delivery.</p></details><details><summary>How long does production take?</summary><p>Approximately 3 business days after the deposit and design details are confirmed. We’ll confirm your estimated ready date.</p></details><details><summary>Can you deliver outside Ruaka?</summary><p>Delivery may be arranged at an extra cost, depending on your location. We’ll confirm the fee before you approve the order.</p></details></div></div></section>
+
+    <section class="contact-section" id="contact"><div class="page-wrap contact-layout"><div class="contact-copy"><p class="eyebrow">LET’S CREATE SOMETHING MEANINGFUL</p><h2>Ready to make an order?</h2><p>Send your idea, preferred size and style, and pickup or delivery location. Enquiries are welcome 24/7; production follows business-day timelines.</p><ul><li>Ruaka front desk collection</li><li>50% deposit to begin production</li><li>Delivery available at an additional, agreed cost</li></ul></div><form id="enquiry-form"><h3>Start an enquiry</h3><label for="name">Your name</label><input id="name" name="name" required placeholder="Name"><label for="product">What are you interested in?</label><select id="product" name="product"><option>Custom portrait</option><option>Family wall art</option><option>Canvas and wall pieces</option><option>Football-themed art</option><option>Other / custom idea</option></select><label for="details">Your preferences</label><textarea id="details" name="details" rows="4" placeholder="Size, style, budget, when needed, delivery area"></textarea><button type="submit" class="button">Continue on WhatsApp ↗</button><small>Your message opens in WhatsApp for you to review and send. No payment is taken here.</small></form></div></section>
   </main>
-  <footer class="footer"><div class="page-wrap"><span>WallArts · Made with care in Ruaka</span><span>© <span id="year"></span> WallArts</span></div></footer>
-  <a class="whatsapp" href="https://wa.me/254723106225?text=Hello%20WallArts%2C%20I%27m%20interested%20in%20your%20artwork." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-  <dialog class="lightbox" id="lightbox"><button type="button" class="lightbox-close" aria-label="Close image preview">×</button><img id="lightbox-img" alt="Expanded wall art"><p id="lightbox-caption"></p></dialog>
+  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand footer-brand" href="#home"><span class="brand-mark">W</span><span><strong>WallArts</strong><small>Made personal</small></span></a><p>Made with care in Ruaka · © <span id="year"></span> WallArts</p><a href="#home">Back to top ↑</a></div></footer>
+  <a class="floating-whatsapp" href="https://wa.me/254723106225?text=Hello%20WallArts%2C%20I%27m%20interested%20in%20your%20artwork." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+  <dialog class="lightbox" id="lightbox"><button class="lightbox-close" type="button" aria-label="Close image preview">×</button><img id="lightbox-img" alt="Expanded wall art"><p id="lightbox-caption"></p></dialog>
   <script src="/script.js"></script>
 </body>
 </html>

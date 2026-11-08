@@ -1,4 +1,29 @@
 const WHATSAPP_NUMBER = "254723106225";
+const SIZE_PREVIEW_ARTWORK = [
+  { src: "bedroom-wall.png", title: "Bedroom wall art" },
+  { src: "family-wall-art.jpg", title: "Family wall art" },
+  { src: "japan-canvas.png", title: "Japanese landscape canvas" },
+  { src: "canvas-set.jpg", title: "Canvas set" },
+  { src: "football-1.jpg", title: "Football art" },
+  { src: "football-2.jpg", title: "Football collage" },
+  { src: "quote-1.jpg", title: "Motivational wall art" },
+  { src: "watercolor-family.jpg", title: "Watercolor family portrait" },
+  { src: "portrait-2.jpg", title: "Portrait artwork" }
+];
+const FRAME_SIZES = [
+  { label: "A5", width: 112, padding: 6 },
+  { label: "A4", width: 142, padding: 7 },
+  { label: "A3", width: 178, padding: 9 },
+  { label: "A2", width: 224, padding: 11 },
+  { label: "A1", width: 280, padding: 14 },
+  { label: "A0", width: 340, padding: 17 }
+];
+const FRAME_FINISHES = [
+  { label: "Oak", color: "#c7a477" },
+  { label: "Walnut", color: "#805439" },
+  { label: "Black", color: "#252525" },
+  { label: "White", color: "#f6f2eb" }
+];
 
 function openWhatsApp(message) {
   window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
@@ -9,22 +34,95 @@ document.addEventListener("DOMContentLoaded", function () {
   if (year) year.textContent = new Date().getFullYear();
 
   const dialog = document.getElementById("lightbox");
-  const image = document.getElementById("lightbox-img");
-  const caption = document.getElementById("lightbox-caption");
-  document.querySelectorAll(".art[data-image]").forEach(function (item) {
-    item.addEventListener("click", function () {
-      if (!dialog || !image || !caption) return;
-      image.src = item.dataset.image;
-      image.alt = item.dataset.title || "Wall art preview";
-      caption.textContent = item.dataset.title || "Wall art";
+  const lightboxImage = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  document.querySelectorAll(".art-card[data-image]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      if (!dialog || !lightboxImage || !lightboxCaption) return;
+      lightboxImage.src = card.dataset.image;
+      lightboxImage.alt = card.dataset.title || "Expanded wall art";
+      lightboxCaption.textContent = card.dataset.title || "Wall art";
       dialog.showModal();
     });
   });
-  const close = document.querySelector(".lightbox-close");
-  if (close && dialog) close.addEventListener("click", function () { dialog.close(); });
+  const closeButton = document.querySelector(".lightbox-close");
+  if (closeButton && dialog) closeButton.addEventListener("click", function () { dialog.close(); });
   if (dialog) dialog.addEventListener("click", function (event) {
     if (event.target === dialog) dialog.close();
   });
+
+  const frame = document.getElementById("size-frame");
+  const frameArt = document.getElementById("size-art");
+  const artName = document.getElementById("preview-art-name");
+  const slideCount = document.getElementById("slide-count");
+  const sizeOptions = document.getElementById("size-options");
+  const finishOptions = document.getElementById("finish-options");
+  if (frame && frameArt && artName && slideCount && sizeOptions && finishOptions) {
+    let artIndex = 0;
+    let sizeIndex = 0;
+    let finishIndex = 0;
+    let timer = null;
+    const sizeButtons = [];
+    const finishButtons = [];
+
+    function updatePreview() {
+      const art = SIZE_PREVIEW_ARTWORK[artIndex];
+      const size = FRAME_SIZES[sizeIndex];
+      const finish = FRAME_FINISHES[finishIndex];
+      frame.style.setProperty("--frame-width", size.width + "px");
+      frame.style.setProperty("--frame-padding", size.padding + "px");
+      frame.style.setProperty("--frame-color", finish.color);
+      frameArt.src = art.src;
+      frameArt.alt = art.title + " preview in size " + size.label + " with " + finish.label + " frame";
+      artName.textContent = art.title;
+      slideCount.textContent = (artIndex + 1) + " / " + SIZE_PREVIEW_ARTWORK.length;
+      sizeButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === sizeIndex);
+        button.setAttribute("aria-pressed", String(index === sizeIndex));
+      });
+      finishButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === finishIndex);
+        button.setAttribute("aria-pressed", String(index === finishIndex));
+      });
+    }
+
+    FRAME_SIZES.forEach((size, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = size.label;
+      button.setAttribute("aria-label", "Preview " + size.label + " size");
+      button.addEventListener("click", () => { sizeIndex = index; updatePreview(); });
+      sizeButtons.push(button);
+      sizeOptions.appendChild(button);
+    });
+    FRAME_FINISHES.forEach((finish, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = finish.label;
+      button.addEventListener("click", () => { finishIndex = index; updatePreview(); });
+      finishButtons.push(button);
+      finishOptions.appendChild(button);
+    });
+    function stepArtwork(direction) {
+      artIndex = (artIndex + direction + SIZE_PREVIEW_ARTWORK.length) % SIZE_PREVIEW_ARTWORK.length;
+      updatePreview();
+    }
+    document.getElementById("prev-art").addEventListener("click", () => stepArtwork(-1));
+    document.getElementById("next-art").addEventListener("click", () => stepArtwork(1));
+    document.getElementById("play-slideshow").addEventListener("click", function () {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+        this.setAttribute("aria-pressed", "false");
+        this.textContent = "▶ Play slideshow";
+        return;
+      }
+      timer = window.setInterval(() => stepArtwork(1), 3200);
+      this.setAttribute("aria-pressed", "true");
+      this.textContent = "Ⅱ Pause slideshow";
+    });
+    updatePreview();
+  }
 
   const form = document.getElementById("enquiry-form");
   if (form) form.addEventListener("submit", function (event) {
@@ -35,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const details = form.elements.details.value.trim();
     let message = "Hello WallArts, my name is " + name + ". I am interested in: " + product + ".";
     if (details) message += " My preferences: " + details + ".";
-    message += " Please share available sizes, pricing, 50% deposit amount, estimated completion date and pickup or delivery options.";
+    message += " Please share available sizes, pricing, 50% deposit amount, estimated completion date, and pickup or delivery options.";
     openWhatsApp(message);
   });
 });
