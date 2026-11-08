@@ -1,26 +1,139 @@
-/* Our Wall Art slideshow */
-.wall-art-section{padding:clamp(38px,7vw,78px) 0;background:var(--green-dark,#1f3a2e);color:#fff}
-.wall-art-container{width:min(1160px,calc(100% - 32px));margin:0 auto}
-.wall-art-heading{margin:0 auto 22px;text-align:center}
-.wall-art-heading .eyebrow{color:#dfc28d}
-.wall-art-heading h2{margin:0 0 7px;font:600 clamp(30px,5vw,46px)/1.12 var(--serif,"Playfair Display",Georgia,serif);letter-spacing:-.03em}
-.wall-art-heading>p:last-child{margin:0;color:#d4ded7;font-size:13px}
-.wall-art-carousel{width:100%;max-width:1000px;margin:0 auto}
-.wall-art-viewport{position:relative;overflow:hidden;aspect-ratio:16/9;min-height:240px;max-height:620px;border-radius:14px;background:#101512;box-shadow:0 20px 55px #0005;touch-action:pan-y;outline:none}
-.wall-art-viewport:focus-visible{outline:3px solid #dfc28d;outline-offset:4px}
-.wall-art-track{position:absolute;inset:0}
-.wall-art-slide{position:absolute;inset:0;display:grid;place-items:center;margin:0;opacity:0;pointer-events:none;transition:opacity .7s ease}
-.wall-art-slide[aria-hidden="false"]{opacity:1;pointer-events:auto}
-.wall-art-slide img{width:100%;height:100%;object-fit:contain;background:#101512}
-.wall-art-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 16px 37px;background:linear-gradient(transparent,#0009);color:#fff;font-size:12px;font-weight:600;text-align:center;pointer-events:none}
-.wall-art-arrow{position:absolute;z-index:2;top:50%;display:grid;width:42px;height:42px;place-items:center;transform:translateY(-50%);border:1px solid #ffffff65;border-radius:50%;background:#17211eaa;color:#fff;font-size:27px;line-height:1;cursor:pointer;transition:background .2s,transform .2s}
-.wall-art-arrow:hover{background:#17211eee;transform:translateY(-50%) scale(1.05)}
-.wall-art-prev{left:12px}.wall-art-next{right:12px}
-.wall-art-dots{position:absolute;z-index:3;right:0;bottom:12px;left:0;display:flex;justify-content:center;gap:8px;padding:4px 50px}
-.wall-art-dot{width:8px;height:8px;flex:0 0 auto;padding:0;border:0;border-radius:50%;background:#ffffff80;cursor:pointer;transition:width .25s,background .25s}
-.wall-art-dot[aria-current="true"]{width:22px;border-radius:10px;background:#fff}
-.wall-art-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:1000px;margin:10px auto 0;color:#d4ded7;font-size:12px}
-.wall-art-play{padding:8px 14px;border:1px solid #ffffff55;border-radius:6px;background:transparent;color:#fff;font-size:12px;font-weight:600;cursor:pointer}
-.wall-art-play:hover{background:#ffffff1a}
-@media(max-width:600px){.wall-art-container{width:calc(100% - 24px)}.wall-art-heading{margin-bottom:17px}.wall-art-viewport{aspect-ratio:3/4;min-height:220px;max-height:75vh;border-radius:10px}.wall-art-arrow{width:36px;height:36px}.wall-art-prev{left:8px}.wall-art-next{right:8px}.wall-art-dots{bottom:9px;gap:6px}.wall-art-dot{width:7px;height:7px}.wall-art-dot[aria-current="true"]{width:18px}.wall-art-slide figcaption{padding:28px 12px 30px;font-size:11px}}
-@media(prefers-reduced-motion:reduce){.wall-art-slide,.wall-art-dot,.wall-art-arrow{transition:none}}
+const WHATSAPP_NUMBER = "254723106225";
+const SIZE_PREVIEW_ARTWORK = [
+  { src: "bedroom-wall.png", title: "Bedroom wall art" },
+  { src: "family-wall-art.jpg", title: "Family wall art" },
+  { src: "japan-canvas.png", title: "Japanese landscape canvas" },
+  { src: "canvas-set.jpg", title: "Canvas set" },
+  { src: "football-1.jpg", title: "Football art" },
+  { src: "football-2.jpg", title: "Football collage" },
+  { src: "quote-1.jpg", title: "Motivational wall art" },
+  { src: "watercolor-family.jpg", title: "Watercolor family portrait" },
+  { src: "portrait-2.jpg", title: "Portrait artwork" }
+];
+const FRAME_SIZES = [
+  { label: "A5", width: 112, padding: 6 },
+  { label: "A4", width: 142, padding: 7 },
+  { label: "A3", width: 178, padding: 9 },
+  { label: "A2", width: 224, padding: 11 },
+  { label: "A1", width: 280, padding: 14 },
+  { label: "A0", width: 340, padding: 17 }
+];
+const FRAME_FINISHES = [
+  { label: "Oak", color: "#c7a477" },
+  { label: "Walnut", color: "#805439" },
+  { label: "Black", color: "#252525" },
+  { label: "White", color: "#f6f2eb" }
+];
+
+function openWhatsApp(message) {
+  window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+
+  const dialog = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  document.querySelectorAll(".art-card[data-image]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      if (!dialog || !lightboxImage || !lightboxCaption) return;
+      lightboxImage.src = card.dataset.image;
+      lightboxImage.alt = card.dataset.title || "Expanded wall art";
+      lightboxCaption.textContent = card.dataset.title || "Wall art";
+      dialog.showModal();
+    });
+  });
+  const closeButton = document.querySelector(".lightbox-close");
+  if (closeButton && dialog) closeButton.addEventListener("click", function () { dialog.close(); });
+  if (dialog) dialog.addEventListener("click", function (event) {
+    if (event.target === dialog) dialog.close();
+  });
+
+  const frame = document.getElementById("size-frame");
+  const frameArt = document.getElementById("size-art");
+  const artName = document.getElementById("preview-art-name");
+  const slideCount = document.getElementById("slide-count");
+  const sizeOptions = document.getElementById("size-options");
+  const finishOptions = document.getElementById("finish-options");
+  if (frame && frameArt && artName && slideCount && sizeOptions && finishOptions) {
+    let artIndex = 0;
+    let sizeIndex = 0;
+    let finishIndex = 0;
+    let timer = null;
+    const sizeButtons = [];
+    const finishButtons = [];
+
+    function updatePreview() {
+      const art = SIZE_PREVIEW_ARTWORK[artIndex];
+      const size = FRAME_SIZES[sizeIndex];
+      const finish = FRAME_FINISHES[finishIndex];
+      frame.style.setProperty("--frame-width", size.width + "px");
+      frame.style.setProperty("--frame-padding", size.padding + "px");
+      frame.style.setProperty("--frame-color", finish.color);
+      frameArt.src = art.src;
+      frameArt.alt = art.title + " preview in size " + size.label + " with " + finish.label + " frame";
+      artName.textContent = art.title;
+      slideCount.textContent = (artIndex + 1) + " / " + SIZE_PREVIEW_ARTWORK.length;
+      sizeButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === sizeIndex);
+        button.setAttribute("aria-pressed", String(index === sizeIndex));
+      });
+      finishButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === finishIndex);
+        button.setAttribute("aria-pressed", String(index === finishIndex));
+      });
+    }
+
+    FRAME_SIZES.forEach((size, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = size.label;
+      button.setAttribute("aria-label", "Preview " + size.label + " size");
+      button.addEventListener("click", () => { sizeIndex = index; updatePreview(); });
+      sizeButtons.push(button);
+      sizeOptions.appendChild(button);
+    });
+    FRAME_FINISHES.forEach((finish, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = finish.label;
+      button.addEventListener("click", () => { finishIndex = index; updatePreview(); });
+      finishButtons.push(button);
+      finishOptions.appendChild(button);
+    });
+    function stepArtwork(direction) {
+      artIndex = (artIndex + direction + SIZE_PREVIEW_ARTWORK.length) % SIZE_PREVIEW_ARTWORK.length;
+      updatePreview();
+    }
+    document.getElementById("prev-art").addEventListener("click", () => stepArtwork(-1));
+    document.getElementById("next-art").addEventListener("click", () => stepArtwork(1));
+    document.getElementById("play-slideshow").addEventListener("click", function () {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+        this.setAttribute("aria-pressed", "false");
+        this.textContent = "▶ Play slideshow";
+        return;
+      }
+      timer = window.setInterval(() => stepArtwork(1), 3200);
+      this.setAttribute("aria-pressed", "true");
+      this.textContent = "Ⅱ Pause slideshow";
+    });
+    updatePreview();
+  }
+
+  const form = document.getElementById("enquiry-form");
+  if (form) form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = form.elements.name.value.trim();
+    const product = form.elements.product.value;
+    const details = form.elements.details.value.trim();
+    let message = "Hello WallArts, my name is " + name + ". I am interested in: " + product + ".";
+    if (details) message += " My preferences: " + details + ".";
+    message += " Please share available sizes, pricing, 50% deposit amount, estimated completion date, and pickup or delivery options.";
+    openWhatsApp(message);
+  });
+});
