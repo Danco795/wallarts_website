@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>WallArts Frame Preview A0–A5</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --fg: #1a1a1a;
+      --card: #fff;
+      --frame: #d6bb86;
+      --deep: #1f2d28;
+      --muted: #5e6663;
+      --gap: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 241, 236, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.09);
+      padding: 12px 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(18px, 2vw, 28px);
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      border: 1px solid rgba(0,0,0,0.24);
+      background: var(--card);
+      color: var(--fg);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button.on {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+
+    #info {
+      color: var(--muted);
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--gap);
+      padding: 20px 14px 28px;
+      align-items: end;
+    }
+
+    .cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--card);
+      padding: 12px 8px 10px;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+
+    .frame {
+      width: var(--w);
+      aspect-ratio: 1 / 1.4142;
+      padding: calc(var(--w) * 0.045);
+      background: var(--fc);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      box-sizing: border-box;
+    }
+
+    .mat {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      padding: calc(var(--w) * 0.07);
+      box-sizing: border-box;
+      box-shadow: inset 0 0 4px rgba(0,0,0,0.12);
+    }
+
+    .mat img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cap {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WallArts – Frame Preview</h1>
+    <div class="row" id="sz"></div>
+    <div class="row" id="fc"></div>
+    <div id="info">Choose a frame size and finish to compare how the artwork will look in different dimensions.</div>
+  </header>
+
+  <main id="g"></main>
+
+  <script>
+    const IM = [
+      "bedroom-wall.png",
+      "family-wall-art.jpg",
+      "japan-canvas.png",
+      "canvas-set.jpg",
+      "football-1.jpg",
+      "football-2.jpg",
+      "quote-1.jpg",
+      "watercolor-family.jpg",
+      "portrait-2.jpg"
+    ];
+
+    const SIZES = [
+      { label: "A5", width: 140 },
+      { label: "A4", width: 170 },
+      { label: "A3", width: 220 },
+      { label: "A2", width: 270 },
+      { label: "A1", width: 330 },
+      { label: "A0", width: 390 }
+    ];
+
+    const COLORS = [
+      { label: "Oak", value: "#c7a477" },
+      { label: "Walnut", value: "#8b5e3c" },
+      { label: "Black", value: "#212121" },
+      { label: "White", value: "#f4f1ec" }
+    ];
+
+    const szWrap = document.getElementById("sz");
+    const fcWrap = document.getElementById("fc");
+    const g = document.getElementById("g");
+
+    let currentSize = SIZES[0];
+    let currentFrame = COLORS[0];
+
+    function renderSizeButtons() {
+      SIZES.forEach((size, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = size.label;
+        if (index === 0) btn.classList.add("on");
+        btn.addEventListener("click", () => {
+          currentSize = size;
+          document.querySelectorAll("#sz button").forEach((b) => b.classList.toggle("on", b === btn));
+          renderFrames();
+        });
+        szWrap.appendChild(btn);
+      });
+
+      COLORS.forEach((color, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = color.label;
+        if (index === 0) btn.classList.add("on");
+        btn.addEventListener("click", () => {
+          currentFrame = color;
+          document.querySelectorAll("#fc button").forEach((b) => b.classList.toggle("on", b === btn));
+          renderFrames();
+        });
+        fcWrap.appendChild(btn);
+      });
+    }
+
+    function renderFrames() {
+      g.innerHTML = "";
+
+      IM.forEach((src) => {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+
+        const frame = document.createElement("div");
+        frame.className = "frame";
+        frame.style.setProperty("--w", currentSize.width + "px");
+        frame.style.setProperty("--fc", currentFrame.value);
+
+        const mat = document.createElement("div");
+        mat.className = "mat";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "WallArts preview";
+        img.loading = "lazy";
+
+        mat.appendChild(img);
+        frame.appendChild(mat);
+
+        const cap = document.createElement("div");
+        cap.className = "cap";
+        cap.textContent = currentSize.label + " / " + currentFrame.label;
+
+        cell.appendChild(frame);
+        cell.appendChild(cap);
+        g.appendChild(cell);
+      });
+
+      const info = document.getElementById("info");
+      info.textContent = currentSize.label + " size with a " + currentFrame.label + " frame finish. Good for cozy feature walls and personal spaces.";
+    }
+
+    renderSizeButtons();
+    renderFrames();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
