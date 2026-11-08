@@ -101,3 +101,7 @@ body{background:#faf7f2}
 .faq-list p{margin:10px 0 0;color:#6a675f}
 .section-heading h2::after{content:"";display:block;width:54px;height:3px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,#c9a25f,#e8cf9a)}
 @media(min-width:760px){.steps-grid{grid-template-columns:repeat(4,1fr)}}
+/* Size guide poster */
+.size-guide-section{background:#fff}
+.size-guide-card{display:block;width:100%;max-width:760px;margin:0 auto;padding:0;aspect-ratio:auto!important;border:0;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px #0003;cursor:zoom-in}
+.size-guide-card img{width:100%;height:auto!important;object-fit:contain!important}
