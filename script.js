@@ -92,7 +92,7 @@ function addWallArtSlideshow() {
     const image = document.createElement("img");
     image.src = slide.src;
     image.alt = slide.alt;
-    image.loading = "lazy";
+    image.loading = index < 2 ? "eager" : "lazy";
     image.decoding = "async";
     const caption = document.createElement("figcaption");
     caption.textContent = "Design " + (index + 1);
