@@ -25,7 +25,7 @@ const FRAME_FINISHES = [
   { label: "White", color: "#f6f2eb" }
 ];
 const WALL_ART_SLIDES = Array.from({ length: 13 }, (_, index) => ({
-  src: "/images/design" + (index + 1) + ".jpg",
+    src: "/design" + (index + 1) + ".jpg",
   alt: "Wall art design " + (index + 1)
 }));
 
